@@ -73,7 +73,7 @@ def verify_download(output_dir, prefix):
 def gcs_download(bucket_name, output_dir, prefix):
     """ Downloads files from Google Cloud Storage bucket, allows one to specify a prefix
     """
-    logger = logging.getLogger("gcs_download")
+    logger = logging.getLogger("get_raw -- {}".format("gcs_download"))
     logger.info('Getting Conntents of bucket {} with prefix {}.'.format(bucket_name, prefix))
     if prefix == "":
         blobs = gcs.list_blobs(bucket_name)
@@ -96,7 +96,7 @@ def gcs_download(bucket_name, output_dir, prefix):
 def main(provider, bucket_name, output_dir, prefix, verify_only, verify):
     """ Runs data download to pull raw data from cloud storage provider.
     """
-    logger = logging.getLogger(__name__)
+    logger = logging.getLogger("get_raw -- {}".format(__name__))
     if verify_only == False:
         logger.info('Downloading raw data from provider: ' + provider)
         if provider == 'gcs':
